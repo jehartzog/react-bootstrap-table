@@ -23,6 +23,7 @@ import Complex from './complex/demo';
 import Remote from './remote/demo';
 import Expand from './expandRow/demo';
 import Span from './column-header-span/demo';
+import Animation from './animation/demo';
 
 const renderApp = () => {
   ReactDOM.render(
@@ -48,6 +49,7 @@ const renderApp = () => {
             <Route path='complex' component={ Complex } />
             <Route path='remote' component={ Remote } />
             <Route path='expandRow' component={ Expand } />
+            <Route path='animation' component={ Animation } />
           </Route>
           <Route path='*' component={ PageNotFound }/>
         </Route>

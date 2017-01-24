@@ -345,7 +345,8 @@ class BootstrapTable extends Component {
             withoutNoDataText={ this.props.options.withoutNoDataText }
             expanding={ this.state.expanding }
             onExpand={ this.handleExpandRow }
-            beforeShowError={ this.props.options.beforeShowError } />
+            beforeShowError={ this.props.options.beforeShowError }
+            animate={ this.props.animate } />
         </div>
         { tableFilter }
         { pagination }
@@ -1164,7 +1165,8 @@ BootstrapTable.propTypes = {
   csvFileName: PropTypes.oneOfType([ PropTypes.string, PropTypes.func ]),
   ignoreSinglePage: PropTypes.bool,
   expandableRow: PropTypes.func,
-  expandComponent: PropTypes.func
+  expandComponent: PropTypes.func,
+  animate: PropTypes.bool
 };
 BootstrapTable.defaultProps = {
   scrollTop: undefined,
@@ -1217,6 +1219,7 @@ BootstrapTable.defaultProps = {
   bodyContainerClass: null,
   tableHeaderClass: null,
   tableBodyClass: null,
+  tableBodyWrapper: null,
   options: {
     clearSearch: false,
     sortName: undefined,
@@ -1268,7 +1271,8 @@ BootstrapTable.defaultProps = {
   },
   exportCSV: false,
   csvFileName: 'spreadsheet.csv',
-  ignoreSinglePage: false
+  ignoreSinglePage: false,
+  animate: false
 };
 
 export default BootstrapTable;

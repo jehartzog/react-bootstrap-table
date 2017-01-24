@@ -6,6 +6,7 @@ import TableColumn from './TableColumn';
 import TableEditColumn from './TableEditColumn';
 import classSet from 'classnames';
 import ExpandComponent from './ExpandComponent';
+import FlipMove from 'react-flip-move';
 
 const isFun = function(obj) {
   return obj && (typeof obj === 'function');
@@ -163,15 +164,22 @@ class TableBody extends Component {
       );
     }
 
+    // TODO Refactor this to allow passing in more animations controls to FlipMove
+    let tableBody = null;
+    if (this.props.animate) {
+      console.log('here');
+      tableBody = <FlipMove typeName='tbody' ref='tbody'>{ tableRows }</FlipMove>;
+    } else {
+      tableBody = <tbody ref='tbody'>{ tableRows }</tbody>;
+    }
+
     return (
       <div ref='container'
         className={ classSet('react-bs-container-body', this.props.bodyContainerClass) }
         style={ this.props.style }>
         <table className={ tableClasses }>
           { React.cloneElement(tableHeader, { ref: 'header' }) }
-          <tbody ref='tbody'>
-            { tableRows }
-          </tbody>
+          { tableBody }
         </table>
       </div>
     );
@@ -318,6 +326,7 @@ TableBody.propTypes = {
   expandBy: PropTypes.string,
   expanding: PropTypes.array,
   onExpand: PropTypes.func,
-  beforeShowError: PropTypes.func
+  beforeShowError: PropTypes.func,
+  animate: PropTypes.bool
 };
 export default TableBody;
